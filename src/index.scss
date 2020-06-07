@@ -1,0 +1,236 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css?family=Nunito:400,700|Open+Sans:400,800");
+
+/* == Colors == */
+
+$bg-body: #f2f6f8;
+
+$primary-color: #0048ff;
+$secondary-color: #ff607b;
+$primary-dark: #0018b2;
+$white-color: #fff;
+$change-24-up: #4caf50;
+$change-24-down: #f44336;
+
+$bg-primary-color: linear-gradient(
+  to right bottom,
+  lighten($primary-color, 8%),
+  $primary-color
+);
+
+/* == Shadow == */
+
+$default-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+$hover-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+
+/* == Fonts == */
+
+$openSans: "Open Sans", sans-serif;
+$nunito: "Nunito", sans-serif;
+
+/* == Mixins == */
+
+@mixin border-radius($value) {
+  border-radius: $value;
+}
+
+@mixin flexbox($align-content: center) {
+  display: flex;
+  justify-content: $align-content;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin animatingShadow {
+  transition: all 0.2s;
+  &:hover {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    box-shadow: $hover-shadow;
+  }
+}
+
+/* == Reset == */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  color: $primary-dark;
+  font-family: $nunito;
+  font-size: 1.6rem;
+  background: $bg-body;
+}
+
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.currency-up {
+  color: #4caf50;
+}
+.currency-down {
+  color: #f44336;
+}
+/* == Header == */
+
+.header {
+  background: $white-color;
+  padding: 1.5rem 0;
+
+  &__logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  &__icon {
+    font-size: 2.3rem;
+    margin-left: 2.5rem;
+    color: $primary-color;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+/* == Hero Section == */
+
+.hero-section {
+  font-family: $openSans;
+  font-weight: 100;
+  font-size: 1.2rem;
+  text-align: center;
+  background: $bg-primary-color;
+  color: $white-color;
+  padding: 1rem 1rem;
+
+  &__timing-primary {
+    color: $secondary-color;
+  }
+}
+
+/* == Progress Bar == */
+
+.main-section {
+  position: relative;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #0018b2;
+  height: 0.3rem;
+  transition: width 0.2s;
+}
+
+/* == Currencies == */
+
+.currencies {
+  &__item {
+    background: $white-color;
+    @include border-radius(4px);
+    box-shadow: $default-shadow;
+    position: relative;
+    margin-bottom: 3rem;
+
+    .currency-thumbnail-content {
+      border-top-left-radius: 0.4rem;
+      border-top-right-radius: 0.4rem;
+      text-align: center;
+      padding-top: 2rem;
+      padding-bottom: 2.5rem;
+      @include flexbox();
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+      &__img {
+        width: 100%;
+        max-width: 8rem;
+      }
+    }
+  }
+
+  &__price {
+    color: $primary-color;
+    text-align: center;
+  }
+
+  &__short-name {
+    font-size: 2rem;
+    color: $white-color;
+    background: rgba($primary-color, 0.9);
+    @include border-radius(2px);
+    padding: 0.5rem 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 8rem;
+  }
+
+  &__name {
+    text-align: center;
+    color: rgb(113, 113, 113);
+  }
+
+  &-info {
+    padding: 2.5rem 1.5rem;
+    @include flexbox(space-between);
+
+    &__change-24h {
+      color: $change-24-up;
+      font-size: 1.5rem;
+
+      &-title {
+        color: $primary-dark;
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+  &-price-btc {
+    text-align: center;
+    color: $white-color;
+    padding: 1rem;
+    font-size: 1.7rem;
+    background: $bg-primary-color;
+    border-bottom-left-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+  }
+}
+
+/* == Blog Section == */
+
+.BlogList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.BlogList-item {
+  margin-bottom: 24px;
+  width: 30%;
+}
+
+.cardAnimated {
+  @include animatingShadow();
+}
